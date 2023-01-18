@@ -19,7 +19,7 @@ public class NoteController {
 	
 	@PostMapping("/patient/addnote/{id}")
 	public Note addNote(@RequestBody Note note, @PathVariable("id") String id) {
-		note.setPatient_id(id);
+		note.setPatientId(id);
 		return noteService.addNote(note);
 	}
 }

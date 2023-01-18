@@ -28,12 +28,12 @@ public class NoteServiceImpl implements NoteService{
 
 		Note entity = new Note();
 		
-		entity.setNote(dto.getNote());
-		entity.setPatient_id(dto.getPatient_id());
+		entity.setPractitionnerNote(dto.getPractitionnerNote());
+		entity.setPatientId(dto.getPatientId());
 
 		noteRepository.save(entity);
 		
 		return entity;
 	}
-
+	
 }

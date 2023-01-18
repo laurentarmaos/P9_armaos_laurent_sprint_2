@@ -9,28 +9,28 @@ public class Note {
 	@Id
 	private String id;
 	
-	private String practitionner_notes;
-
-	private String patient_id;
+	private String practitionnerNotes;
+	
+	private String patientId;
 	
 	public Note() {}
 
 	
-	public String getNote() {
-		return practitionner_notes;
+	public String getPractitionnerNote() {
+		return practitionnerNotes;
 	}
 
-	public void setNote(String practitionner_notes) {
-		this.practitionner_notes = practitionner_notes;
+	public void setPractitionnerNote(String practitionnerNotes) {
+		this.practitionnerNotes = practitionnerNotes;
 	}
 	
 
-	public String getPatient_id() {
-		return patient_id;
+	public String getPatientId() {
+		return patientId;
 	}
 
-	public void setPatient_id(String patient_id) {
-		this.patient_id = patient_id;
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
 	}
 
 
