@@ -1,6 +1,5 @@
 package com.mediscreen.controllers;
 
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +15,10 @@ public class NoteController {
 	public NoteController(NoteService noteService) {
 		this.noteService = noteService;
 	}
-	
-	@PostMapping("/patient/{id}/addnote")
-	public Note addNote(@RequestBody Note note, @PathVariable("id") String id) {
-		note.setPatientId(id);
+		
+	@PostMapping("/patient/addnote")
+	public Note addNote(@RequestBody Note note) {
 		return noteService.addNote(note);
 	}
+
 }
