@@ -2,6 +2,7 @@ package com.mediscreen.controllers;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mediscreen.entities.Note;
@@ -16,9 +17,14 @@ public class NoteController {
 		this.noteService = noteService;
 	}
 		
+//	@PostMapping("/patient/addnote")
+//	public Note addNote(@RequestBody Note note) {
+//		return noteService.addNote(note);
+//	}
+	
 	@PostMapping("/patient/addnote")
-	public Note addNote(@RequestBody Note note) {
-		return noteService.addNote(note);
+	public Note addNote(@RequestParam("practitionnerNotes") String practitionnerNotes, @RequestParam("patientId") String patientId) {
+		return noteService.addNote(practitionnerNotes, patientId);
 	}
 
 }
