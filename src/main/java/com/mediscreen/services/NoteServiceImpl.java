@@ -1,5 +1,6 @@
 package com.mediscreen.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,18 +25,12 @@ public class NoteServiceImpl implements NoteService{
 	}
 	
 	
-//	@Override
-//	public Note addNote(Note dto) {
-//
-//		Note entity = new Note();
-//		
-//		entity.setPractitionnerNote(dto.getPractitionnerNote());
-//		entity.setPatientId(dto.getPatientId());
-//
-//		noteRepository.save(entity);
-//		
-//		return entity;
-//	}
+	@Override
+	public List<Note> findNoteByPatientId(String patientId) {
+	
+		//System.out.println(noteRepository.findAllByPatientId(patientId).get(0).getPractitionnerNote());
+		return noteRepository.findAllByPatientId(patientId);
+	}
 	
 	@Override
 	public Note addNote(String practitionnerNotes, String patientId) {

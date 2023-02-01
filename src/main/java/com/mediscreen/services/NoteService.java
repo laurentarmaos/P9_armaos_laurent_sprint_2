@@ -8,6 +8,7 @@ public interface NoteService {
 
 	List<Note> findAllNotes();
 	
-	//Note addNote(Note note);
+	List<Note> findNoteByPatientId(String patientId);
+
 	Note addNote(String practitionnerNotes, String patientId);
 }
