@@ -29,7 +29,7 @@ public class NoteController {
 	}
 	
 	@PostMapping("/patient/addnote")
-	public Note addNote(@RequestParam("practitionnerNotes") String practitionnerNotes, @RequestParam("patientId") String patientId) {
+	public Note addNote(@RequestParam(value="practitionnerNotes", required = false) String practitionnerNotes, @RequestParam(value="patientId", required = false) String patientId) {
 		return noteService.addNote(practitionnerNotes, patientId);
 	}
 

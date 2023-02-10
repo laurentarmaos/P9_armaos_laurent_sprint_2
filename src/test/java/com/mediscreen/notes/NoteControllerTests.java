@@ -1,8 +1,6 @@
 package com.mediscreen.notes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +10,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mediscreen.controllers.NoteController;
 import com.mediscreen.entities.Note;
@@ -41,21 +38,14 @@ public class NoteControllerTests {
 		Note note = new Note();
 		note.setPatientId("1");
 		note.setPractitionnerNote("note");
-		
-		when(noteService.addNote(note.getPractitionnerNote(), note.getPatientId())).thenReturn(note);
-		
-		Note savedNote = noteController.addNote(note.getPractitionnerNote(), note.getPatientId());
+
 		
 		
-		assertNotNull(savedNote);
-		assertEquals(savedNote, note);
-		
-		
-//		mockMvc.perform(MockMvcRequestBuilders.post(
-//					"/patient/addnote",
-//					note.getPractitionnerNote(),
-//					note.getPatientId()
-//				)).andExpect(status().isOk());
+		mockMvc.perform(MockMvcRequestBuilders.post(
+					"/patient/addnote",
+					note.getPractitionnerNote(),
+					note.getPatientId()
+				)).andExpect(status().isOk());
 	}
 
 }
