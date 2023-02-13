@@ -27,8 +27,7 @@ public class NoteServiceImpl implements NoteService{
 	
 	@Override
 	public List<Note> findNoteByPatientId(String patientId) {
-	
-		//System.out.println(noteRepository.findAllByPatientId(patientId).get(0).getPractitionnerNote());
+
 		return noteRepository.findAllByPatientId(patientId);
 	}
 	
@@ -37,12 +36,34 @@ public class NoteServiceImpl implements NoteService{
 
 		Note entity = new Note();
 		
-		entity.setPractitionnerNote(practitionnerNotes);
+		entity.setPractitionnerNotes(practitionnerNotes);
 		entity.setPatientId(patientId);
 
 		noteRepository.save(entity);
 		
 		return entity;
 	}
+
+	@Override
+	public Note updateNote(Note note) {
+		
+		noteRepository.save(note);
+		
+		return note;
+	}
+
+	@Override
+	public void deleteNote(String noteId) {
+		
+		noteRepository.deleteById(noteId);
+	}
+
+	@Override
+	public Note findNote(String noteId) {
+
+		return noteRepository.findById(noteId).get();
+	}
+	
+	
 	
 }

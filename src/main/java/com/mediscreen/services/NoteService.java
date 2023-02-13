@@ -11,4 +11,10 @@ public interface NoteService {
 	List<Note> findNoteByPatientId(String patientId);
 
 	Note addNote(String practitionnerNotes, String patientId);
+	
+	Note updateNote(Note note);
+	
+	void deleteNote(String noteId);
+	
+	Note findNote(String noteId);
 }

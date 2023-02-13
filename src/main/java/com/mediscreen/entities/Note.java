@@ -16,11 +16,11 @@ public class Note {
 	public Note() {}
 
 	
-	public String getPractitionnerNote() {
+	public String getPractitionnerNotes() {
 		return practitionnerNotes;
 	}
 
-	public void setPractitionnerNote(String practitionnerNotes) {
+	public void setPractitionnerNotes(String practitionnerNotes) {
 		this.practitionnerNotes = practitionnerNotes;
 	}
 	
@@ -36,6 +36,10 @@ public class Note {
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

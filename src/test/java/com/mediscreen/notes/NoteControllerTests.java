@@ -31,19 +31,26 @@ public class NoteControllerTests {
 		mockMvc = MockMvcBuilders.standaloneSetup(noteController).build();
 	}
 	
+	@Test
+	public void findNoteByPatientIdTest() throws Exception{
+		Note note = new Note();
+		note.setPatientId("1");
+		
+		mockMvc.perform(MockMvcRequestBuilders.get(
+				"/patient/{patientId}/findnotes",
+				note.getPatientId()
+			)).andExpect(status().isOk());
+	}
 
-//TODO corriger le pb dû au @RequestParam
 	@Test
 	public void addNoteTest() throws Exception {
 		Note note = new Note();
 		note.setPatientId("1");
-		note.setPractitionnerNote("note");
-
-		
+		note.setPractitionnerNotes("note");
 		
 		mockMvc.perform(MockMvcRequestBuilders.post(
 					"/patient/addnote",
-					note.getPractitionnerNote(),
+					note.getPractitionnerNotes(),
 					note.getPatientId()
 				)).andExpect(status().isOk());
 	}
