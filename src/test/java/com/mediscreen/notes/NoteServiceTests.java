@@ -35,6 +35,7 @@ public class NoteServiceTests {
 	@Test
 	public void addNoteTest() {
 		Note note = new Note();
+		note.setId("1");
 		note.setPatientId("1");
 		note.setPractitionnerNotes("note");
 		

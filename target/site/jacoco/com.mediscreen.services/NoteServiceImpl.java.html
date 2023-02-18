@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NoteServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Mediscreen_practionner_notes</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.services</a> &gt; <span class="el_source">NoteServiceImpl.java</span></div><h1>NoteServiceImpl.java</h1><pre class="source lang-java linenums">package com.mediscreen.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mediscreen.entities.Note;
+import com.mediscreen.repository.NoteRepository;
+
+@Service
+public class NoteServiceImpl implements NoteService{
+	
+	NoteRepository noteRepository;
+	
+<span class="fc" id="L17">	public NoteServiceImpl(NoteRepository noteRepository) {</span>
+<span class="fc" id="L18">		this.noteRepository = noteRepository;</span>
+<span class="fc" id="L19">	}</span>
+
+	@Override
+	public List&lt;Note&gt; findAllNotes() {
+		
+<span class="fc" id="L24">		return noteRepository.findAll();</span>
+	}
+	
+	
+	@Override
+	public List&lt;Note&gt; findNoteByPatientId(String patientId) {
+
+<span class="fc" id="L31">		return noteRepository.findAllByPatientId(patientId);</span>
+	}
+	
+	@Override
+	public Note addNote(String practitionnerNotes, String patientId) {
+
+<span class="fc" id="L37">		Note entity = new Note();</span>
+		
+<span class="fc" id="L39">		entity.setPractitionnerNotes(practitionnerNotes);</span>
+<span class="fc" id="L40">		entity.setPatientId(patientId);</span>
+
+<span class="fc" id="L42">		noteRepository.save(entity);</span>
+		
+<span class="fc" id="L44">		return entity;</span>
+	}
+
+	@Override
+	public Note updateNote(Note note) {
+		
+<span class="nc" id="L50">		noteRepository.save(note);</span>
+		
+<span class="nc" id="L52">		return note;</span>
+	}
+
+	@Override
+	public void deleteNote(String noteId) {
+		
+<span class="fc" id="L58">		noteRepository.deleteById(noteId);</span>
+<span class="fc" id="L59">	}</span>
+
+	@Override
+	public Note findNote(String noteId) {
+
+<span class="nc" id="L64">		return noteRepository.findById(noteId).get();</span>
+	}
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
